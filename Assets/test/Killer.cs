@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class Killer : MonoBehaviour {
-	
+
+	public string Tipo = "revienta";
+
 	// Use this for initialization
 	void Start () {
 		

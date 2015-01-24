@@ -21,7 +21,18 @@ public class Enano1 : MonoBehaviour {
 		if (Input.GetKey (KeyCode.D))
 						GoRight ();
 
+		UpdateSprite ();
+
 		FuerzaDeAtraccionEnana ();
+	}
+
+	void UpdateSprite() {
+		var sprite = this.transform.GetChild (0);
+		var anima = sprite.GetComponent<Animator>();
+		if (anima == null)
+			return;
+		anima.SetBool("Grounded", IsGrounded ());
+		anima.SetFloat ("VSpeed", this.rigidbody2D.velocity.y);
 	}
 
 	void FuerzaDeAtraccionEnana() {

@@ -3,6 +3,10 @@ using System.Collections;
 
 public class DebugMovimientoEnanos : MonoBehaviour {
 	public bool Direction = true;
+
+	public bool Toggle = false;
+	public bool ToggleOn = false;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -10,10 +14,20 @@ public class DebugMovimientoEnanos : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Toggle && ToggleOn) {
+			MoverEnanos ();
+		}
+	}
+
+	void OnMouseDown() {
+		ToggleOn = !ToggleOn;
 	}
 
 	void OnMouseDrag() {
+		MoverEnanos ();
+	}
+
+	void MoverEnanos() {
 		var enanos = Object.FindObjectsOfType<Enano1> ();
 		foreach (var enano in enanos) {
 			if(Direction)
@@ -21,5 +35,6 @@ public class DebugMovimientoEnanos : MonoBehaviour {
 			else
 				enano.GoLeft();
 		}
+
 	}
 }

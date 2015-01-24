@@ -16,6 +16,8 @@ public class Score : MonoBehaviour {
 
 	public void IncrementScore(int by) {
 		CurrentScore += by;
-		this.GetComponent<TextMesh> ().text = "Score: " + CurrentScore;
+		var tm = this.GetComponent<TextMesh> ();
+		if(tm != null)
+			tm.text = "Score: " + CurrentScore;
 	}
 }

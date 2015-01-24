@@ -4,13 +4,14 @@ using System.Collections;
 public class Enano1 : MonoBehaviour {
 
 	public int NumeroEnano = 0;
+	public static bool IsDead = false;
 
 	public float Impulso = 510; // funciona bien para escala de gravedad 2
 	// private float Impulso = 350; // funciona bien para escala de  gravedad 1
 
 	// Use this for initialization
 	void Start () {
-	
+		IsDead = false;
 	}
 	
 	// Update is called once per frame
@@ -35,7 +36,28 @@ public class Enano1 : MonoBehaviour {
 		anima.SetFloat ("VSpeed", this.rigidbody2D.velocity.y);
 	}
 
+	public void DieBy(string TipoDeMuerte) {
+		if (IsDead)
+			return;
+
+		if(TipoDeMuerte == "Win")
+			Object.Instantiate (Resources.Load ("WonPanel"), new Vector3(0, 100, 0) + this.transform.position, Quaternion.identity);
+		else
+			Object.Instantiate (Resources.Load ("RestartPanel"), new Vector3(0, 100, 0) + this.transform.position, Quaternion.identity);
+		IsDead = true;
+
+		var enanos = Object.FindObjectsOfType<Enano1> ();
+		foreach (var enano in enanos) {
+			enano.collider2D.isTrigger = true;
+			enano.rigidbody2D.fixedAngle = false;
+			enano.rigidbody2D.AddForce (new Vector2 (-200 * this.rigidbody2D.mass, -20 * this.rigidbody2D.mass));
+			enano.rigidbody2D.AddTorque (Random.Range (-100, 100));
+		}
+	}
+
 	void FuerzaDeAtraccionEnana() {
+		if (IsDead)
+						return;
 		var enanos = Object.FindObjectsOfType<Enano1> ();
 		foreach (var enano in enanos) {
 			if(enano == this) continue;
@@ -90,6 +112,8 @@ public class Enano1 : MonoBehaviour {
 
 	bool IsGrounded()
 	{
+		if (IsDead)
+				return false;
 		return Physics2D.Raycast (new Vector2 (this.transform.position.x, 
 		                                     this.transform.position.y - this.collider2D.bounds.size.y - 0.01F), 
 		                         new Vector2 (0, -1), 

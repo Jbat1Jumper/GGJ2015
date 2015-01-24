@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Killer : MonoBehaviour {
-
-	public string Tipo = "revienta";
+public class Finish : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D other) {
 		Debug.Log ("OnTriggerEnter");
@@ -12,13 +10,13 @@ public class Killer : MonoBehaviour {
 			return; // No es un enano
 		}
 		PlaySound ();
-
+		
 		var enanos = Object.FindObjectsOfType<Enano1> ();
 		foreach (var enano in enanos) 
-			enano.DieBy (Tipo);
+			enano.DieBy ("Win");
 	}
 	
 	void PlaySound() {
-		Debug.Log ("Die");
+		Debug.Log ("Cheers");
 	}
 }

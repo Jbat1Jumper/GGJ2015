@@ -32,13 +32,26 @@ public class Enano1 : MonoBehaviour {
 		}
 	}
 
+	private float speedLimit = 15;
+
 	public void GoLeft(){
-		//this.rigidbody2D.AddForce(new Vector3 (-20 * this.rigidbody2D.mass, 0));
+		//this.rigidbody2D.AddForce(new Vector3 (-1400 * this.rigidbody2D.mass * Time.deltaTime, 0));
 		this.transform.position += new Vector3 (-10 * Time.deltaTime, 0);
+
+		var ev = this.rigidbody2D.velocity;
+		if(ev.x < -speedLimit) {
+			ev.x = -speedLimit;
+			this.rigidbody2D.velocity = ev;
+		}
 	}
 	public void GoRight() {
-		//this.rigidbody2D.AddForce(new Vector3 (20 * this.rigidbody2D.mass, 0));
+		//this.rigidbody2D.AddForce(new Vector3 (1400 * this.rigidbody2D.mass * Time.deltaTime, 0));
 		this.transform.position += new Vector3 (10 * Time.deltaTime, 0);
+		var ev = this.rigidbody2D.velocity;
+		if(ev.x > speedLimit) {
+			ev.x = speedLimit;
+			this.rigidbody2D.velocity = ev;
+		}
 	}
 
 	bool HasEnanoUp()

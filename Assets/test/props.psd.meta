@@ -11,6 +11,7 @@ TextureImporter:
     21300012: props_5
     21300014: props_6
     21300016: props_7
+    21300018: props_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -56,9 +57,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 71
-        y: 864
+        y: 1194
         width: 258
-        height: 258
+        height: 259
       alignment: 1
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -66,9 +67,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 379
-        y: 864
+        y: 1194
         width: 259
-        height: 258
+        height: 259
       alignment: 1
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -76,9 +77,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 707
-        y: 608
-        width: 259
-        height: 514
+        y: 938
+        width: 260
+        height: 515
       alignment: 1
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -86,9 +87,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 71
-        y: 536
+        y: 866
         width: 514
-        height: 258
+        height: 259
       alignment: 1
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -96,9 +97,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 68
-        y: 257
+        y: 588
         width: 770
-        height: 259
+        height: 258
       alignment: 1
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -106,9 +107,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 105
-        y: 66
+        y: 396
         width: 130
-        height: 130
+        height: 131
       alignment: 1
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -116,9 +117,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 303
-        y: 66
+        y: 396
         width: 130
-        height: 130
+        height: 131
       alignment: 1
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,9 +127,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 517
-        y: 66
-        width: 130
-        height: 130
+        y: 396
+        width: 131
+        height: 131
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: props_8
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 73
+        width: 759
+        height: 253
       alignment: 1
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

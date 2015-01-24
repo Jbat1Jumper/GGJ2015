@@ -12,6 +12,6 @@ public class Bala : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.transform.position += new Vector3 (Velocidad * 0.1F, 0);
+		this.transform.position += new Vector3 (Velocidad * Time.deltaTime, 0);
 	}
 }

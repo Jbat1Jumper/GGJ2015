@@ -5,7 +5,7 @@ public class Enano1 : MonoBehaviour {
 
 	public int NumeroEnano = 0;
 
-	private float Impulso = 510; // funciona bien para escala de gravedad 2
+	public float Impulso = 510; // funciona bien para escala de gravedad 2
 	// private float Impulso = 350; // funciona bien para escala de  gravedad 1
 
 	// Use this for initialization
@@ -22,21 +22,62 @@ public class Enano1 : MonoBehaviour {
 						GoLeft ();
 		if (Input.GetKey (KeyCode.D))
 						GoRight ();
+
+		FuerzaDeAtraccionEnana ();
+	}
+
+	void FuerzaDeAtraccionEnana() {
+		var enanos = Object.FindObjectsOfType<Enano1> ();
+		foreach (var enano in enanos) {
+			if(enano == this) continue;
+			enano.transform.position += new Vector3((this.transform.position - enano.transform.position).x * 0.1F, 0F);
+		}
 	}
 
 	void GoLeft(){
-		this.rigidbody2D.AddForce(new Vector3 (-20, 0));
+		this.rigidbody2D.AddForce(new Vector3 (-20 * this.rigidbody2D.mass, 0));
 	}
 	void GoRight() {
-		this.rigidbody2D.AddForce(new Vector3 (20, 0));
+		this.rigidbody2D.AddForce(new Vector3 (20 * this.rigidbody2D.mass, 0));
+	}
+
+	bool HasEnanoUp()
+	{
+		var rch = Physics2D.Raycast (new Vector2 (this.transform.position.x, 
+		                                		  this.transform.position.y + 0.01F), 
+		                   			 new Vector2 (0, 1), 
+		                             0.10F);
+		if (rch) {
+			var enanoInterior = rch.transform.gameObject.GetComponent<Enano1>();
+			if(enanoInterior != null)
+				return true;
+		}
+		rch = Physics2D.Raycast (new Vector2 (this.transform.position.x + this.collider2D.bounds.size.x, 
+		                                          this.transform.position.y + 0.01F), 
+		                             new Vector2 (0, 1), 
+		                             0.10F);
+		if (rch) {
+			var enanoInterior = rch.transform.gameObject.GetComponent<Enano1>();
+			if(enanoInterior != null)
+				return true;
+		}
+		return false;
 	}
 
 	bool IsGrounded()
 	{
-		return Physics2D.Raycast(new Vector2(this.transform.position.x + this.collider2D.bounds.size.x / 2, 
+		return Physics2D.Raycast (new Vector2 (this.transform.position.x, 
 		                                     this.transform.position.y - this.collider2D.bounds.size.y - 0.01F), 
-		                         new Vector2(0, -1), 
-		                         0.08F);
+		                         new Vector2 (0, -1), 
+		                         0.10F)
+			|| Physics2D.Raycast (new Vector2 (this.transform.position.x + this.collider2D.bounds.size.x / 2, 
+			                                 this.transform.position.y - this.collider2D.bounds.size.y - 0.01F), 
+			                     new Vector2 (0, -1), 
+			                     0.15F)
+			|| Physics2D.Raycast (new Vector2 (this.transform.position.x + this.collider2D.bounds.size.x, 
+				                                 this.transform.position.y - this.collider2D.bounds.size.y - 0.01F), 
+				                     new Vector2 (0, -1), 
+				                     0.10F);
 	}
 
 	void Subir() 
@@ -51,7 +92,10 @@ public class Enano1 : MonoBehaviour {
 			ev.y = 1;
 			this.rigidbody2D.velocity = ev;
 		}
-		
+
+		if (!HasEnanoUp ())
+			return;
+
 		var arriba = FindEnanoByNum (NumeroEnano + 1);
 		if(arriba != null)
 			arriba.Subir ();

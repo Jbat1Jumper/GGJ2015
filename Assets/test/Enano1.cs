@@ -15,8 +15,6 @@ public class Enano1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (IsGrounded ())
-			Debug.Log (NumeroEnano + " IsGrounded");
 
 		if (Input.GetKey (KeyCode.A))
 						GoLeft ();
@@ -30,15 +28,17 @@ public class Enano1 : MonoBehaviour {
 		var enanos = Object.FindObjectsOfType<Enano1> ();
 		foreach (var enano in enanos) {
 			if(enano == this) continue;
-			enano.transform.position += new Vector3((this.transform.position - enano.transform.position).x * 0.1F, 0F);
+			enano.transform.position += new Vector3((this.transform.position - enano.transform.position).x * 0.3F, 0F);
 		}
 	}
 
-	void GoLeft(){
-		this.rigidbody2D.AddForce(new Vector3 (-20 * this.rigidbody2D.mass, 0));
+	public void GoLeft(){
+		//this.rigidbody2D.AddForce(new Vector3 (-20 * this.rigidbody2D.mass, 0));
+		this.transform.position += new Vector3 (-10 * Time.deltaTime, 0);
 	}
-	void GoRight() {
-		this.rigidbody2D.AddForce(new Vector3 (20 * this.rigidbody2D.mass, 0));
+	public void GoRight() {
+		//this.rigidbody2D.AddForce(new Vector3 (20 * this.rigidbody2D.mass, 0));
+		this.transform.position += new Vector3 (10 * Time.deltaTime, 0);
 	}
 
 	bool HasEnanoUp()
@@ -83,7 +83,6 @@ public class Enano1 : MonoBehaviour {
 	void Subir() 
 	{
 		if (!IsGrounded ()) {
-			Debug.Log ("No puedo subir");
 			return;
 		}
 		this.rigidbody2D.AddForce (new Vector3 (0, Impulso, 0));
@@ -110,7 +109,6 @@ public class Enano1 : MonoBehaviour {
 			this.rigidbody2D.velocity = ev;
 		}
 		if (IsGrounded ()) {
-			Debug.Log ("Empujo al de abajo");
 			var abajo = FindEnanoByNum (NumeroEnano - 1);
 			if(abajo != null)
 				abajo.Bajar ();
@@ -130,7 +128,6 @@ public class Enano1 : MonoBehaviour {
 	void OnMouseDown() {
 		 
 		if (!IsGrounded ()) {
-			Debug.Log ("No puedo saltar");
 			return;
 		}
 

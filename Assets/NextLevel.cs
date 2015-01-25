@@ -3,13 +3,8 @@ using System.Collections;
 
 public class NextLevel : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void OnMouseDown() {
+		int LvlNum = int.Parse (Application.loadedLevelName.Substring (3)) + 1;
+		Application.LoadLevel ("Lvl" + LvlNum.ToString ());
 	}
 }

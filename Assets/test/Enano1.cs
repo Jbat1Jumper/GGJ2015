@@ -15,6 +15,17 @@ public class Enano1 : MonoBehaviour {
 		JumpWait = Random.Range (0.1F, 0.5F);
 		IsDead = false;
 		WinDance = false;
+		OurScore = 0;
+	}
+
+	private static int OurScore = 0;
+
+	public static void IncrementScore(int num) {
+		OurScore += num;
+	}
+
+	public static int GetScore(){
+		return OurScore;
 	}
 	
 	// Update is called once per frame

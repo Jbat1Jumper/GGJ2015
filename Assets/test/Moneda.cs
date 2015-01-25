@@ -27,6 +27,7 @@ public class Moneda : MonoBehaviour {
 		foreach (var score in scores)
 			score.IncrementScore (Valor);
 
+		Enano1.IncrementScore (Valor);
 
 		Destroy(this.gameObject);
 	}

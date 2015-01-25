@@ -5,17 +5,25 @@ public class Enano1 : MonoBehaviour {
 
 	public int NumeroEnano = 0;
 	public static bool IsDead = false;
+	public static bool WinDance = false;
 
 	public float Impulso = 510; // funciona bien para escala de gravedad 2
 	// private float Impulso = 350; // funciona bien para escala de  gravedad 1
 
 	// Use this for initialization
 	void Start () {
+		JumpWait = Random.Range (0.1F, 0.5F);
 		IsDead = false;
+		WinDance = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (WinDance) {
+			DoWinDance ();
+			return;
+		}
 
 		if (Input.GetKey (KeyCode.A))
 						GoLeft (1);
@@ -25,6 +33,15 @@ public class Enano1 : MonoBehaviour {
 		UpdateSprite ();
 
 		FuerzaDeAtraccionEnana ();
+	}
+
+	private float JumpWait;
+	void DoWinDance () {
+		JumpWait -= Time.deltaTime;
+		if(JumpWait < 0F){
+			JumpWait = Random.Range(0.8F, 1.8F);
+			Subir ();
+		}
 	}
 
 	void UpdateSprite() {
@@ -46,12 +63,22 @@ public class Enano1 : MonoBehaviour {
 			Object.Instantiate (Resources.Load ("RestartPanel"), new Vector3(0, 100, 0) + this.transform.position, Quaternion.identity);
 		IsDead = true;
 
+
 		var enanos = Object.FindObjectsOfType<Enano1> ();
 		foreach (var enano in enanos) {
 			enano.collider2D.isTrigger = true;
 			enano.rigidbody2D.fixedAngle = false;
-			enano.rigidbody2D.AddForce (new Vector2 (-200 * this.rigidbody2D.mass, -20 * this.rigidbody2D.mass));
-			enano.rigidbody2D.AddTorque (Random.Range (-100, 100));
+			if(TipoDeMuerte == "revienta"){
+				enano.rigidbody2D.AddForce (new Vector2 (-200 * enano.rigidbody2D.mass, -20 * enano.rigidbody2D.mass));
+				enano.rigidbody2D.AddTorque (Random.Range (-20, 20));
+			}else if(TipoDeMuerte == "pinches"){
+				enano.rigidbody2D.AddTorque (Random.Range (-20, 35));
+				enano.rigidbody2D.AddForce (new Vector2 (0F, 70 * enano.rigidbody2D.mass));
+			}else if(TipoDeMuerte == "Win"){
+				enano.collider2D.isTrigger = false;
+				enano.rigidbody2D.fixedAngle = true;
+				WinDance = true;
+			}
 		}
 	}
 
@@ -68,6 +95,8 @@ public class Enano1 : MonoBehaviour {
 	private float speedLimit = 15;
 
 	public void GoLeft(float speed){
+		if (WinDance)
+						return;
 		//this.rigidbody2D.AddForce(new Vector3 (-1400 * this.rigidbody2D.mass * Time.deltaTime, 0));
 		this.transform.position += new Vector3 (-speed * Time.deltaTime, 0);
 
@@ -78,6 +107,8 @@ public class Enano1 : MonoBehaviour {
 		}
 	}
 	public void GoRight(float speed) {
+		if (WinDance)
+			return;
 		//this.rigidbody2D.AddForce(new Vector3 (1400 * this.rigidbody2D.mass * Time.deltaTime, 0));
 		this.transform.position += new Vector3 (speed * Time.deltaTime, 0);
 		var ev = this.rigidbody2D.velocity;
@@ -112,8 +143,6 @@ public class Enano1 : MonoBehaviour {
 
 	public bool IsGrounded()
 	{
-		if (IsDead)
-				return false;
 		return Physics2D.Raycast (new Vector2 (this.transform.position.x, 
 		                                     this.transform.position.y - this.collider2D.bounds.size.y - 0.05F), 
 		                         new Vector2 (0, -1), 
@@ -135,8 +164,8 @@ public class Enano1 : MonoBehaviour {
 		}
 		this.rigidbody2D.AddForce (new Vector3 (0, Impulso, 0));
 		var ev = this.rigidbody2D.velocity;
-		if(ev.y > 0.1F) {
-			ev.y = 0.1F;
+		if(ev.y > 0.01F) {
+			ev.y = 0.01F;
 			this.rigidbody2D.velocity = ev;
 		}
 
@@ -175,6 +204,8 @@ public class Enano1 : MonoBehaviour {
 
 	public void Click() {
 		Debug.Log ("Click sobre enano " + NumeroEnano);
+		if (IsDead)
+			return;
 		if (!IsGrounded ()) {
 			return;
 		}

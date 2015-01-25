@@ -3,15 +3,22 @@ using System.Collections;
 
 public class MusicBox : MonoBehaviour {
 
-	void Awake () {
-		GameObject mb = GameObject.Find("MusicBox");
-		if (mb != null)
-			Destroy (this.gameObject);
-		
-		DontDestroyOnLoad(gameObject);
+	private static MusicBox instance = null;
+	public static MusicBox Instance {
+		get { return instance; }
+	}
+	void Awake() {
+		if (instance != null && instance != this) {
+			Destroy(this.gameObject);
+			return;
+		} else {
+			instance = this;
+		}
+		DontDestroyOnLoad(this.gameObject);
 	}
 
-	public static MusicBox GetInstance() {
-		return Object.FindObjectOfType<MusicBox> ();
+	public static void PlayIntroMusic() {
+
 	}
 }
+

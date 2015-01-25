@@ -5,7 +5,11 @@ public class GoToScene : MonoBehaviour {
 
 	public string Destination = "";
 
-	void OnMouseDown() {
+	public void GoTo() {
 		Application.LoadLevel (Destination);
+	}
+
+	void OnMouseDown() {
+		GoTo ();
 	}
 }

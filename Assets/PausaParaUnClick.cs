@@ -35,6 +35,10 @@ public class PausaParaUnClick : MonoBehaviour {
 		}	
 	}
 
+	string MyKey() {
+		return "tuto" + Application.loadedLevelName + this.transform.position.x.ToString ();
+	}
+
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.GetComponent<Enano1> () == null) {
 			Debug.Log("No es un enano, solo puedo pausar enanos");
@@ -47,8 +51,16 @@ public class PausaParaUnClick : MonoBehaviour {
 		if (Enano1.IsDead) {
 				Debug.Log ("Los enanos estan muertos, de que tutorial me estas hablando");
 			return;
-		}				
-
+		}
+		var pasadas = 0;
+		if (PlayerPrefs.HasKey (MyKey ())) {
+			pasadas = PlayerPrefs.GetInt(MyKey ());
+			if(pasadas >= 2){
+				Debug.Log ("Ya aprendiste este tutorial");
+				return;
+			}
+		}
+		PlayerPrefs.SetInt (MyKey (), pasadas + 1);
 		Llego = true;
 		Time.timeScale = 0F;
 		DedoSenalador = Object.Instantiate (Resources.Load ("DedoSenalador"), this.transform.position, Quaternion.identity);

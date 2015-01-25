@@ -12,6 +12,8 @@ public class SeguirEnanos : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Enano1.IsDead)
+						return;
 		var enanos = Object.FindObjectsOfType<Enano1> ();
 		if (enanos.Length == 0)
 			return;

@@ -58,9 +58,9 @@ public class Enano1 : MonoBehaviour {
 			return;
 
 		if(TipoDeMuerte == "Win")
-			Object.Instantiate (Resources.Load ("WonPanel"), new Vector3(0, 100, 0) + this.transform.position, Quaternion.identity);
+			Object.Instantiate (Resources.Load ("WonPanel"), new Vector3(2, 20, 0) + this.transform.position, Quaternion.identity);
 		else
-			Object.Instantiate (Resources.Load ("RestartPanel"), new Vector3(0, 100, 0) + this.transform.position, Quaternion.identity);
+			Object.Instantiate (Resources.Load ("RestartPanel"), new Vector3(2, 20, 0) + this.transform.position, Quaternion.identity);
 		IsDead = true;
 
 

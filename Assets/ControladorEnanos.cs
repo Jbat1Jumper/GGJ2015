@@ -5,6 +5,8 @@ public class ControladorEnanos : MonoBehaviour {
 
 	public float WalkingSpeed = 13;
 
+	private float TiempoDeGracia = 1.0F;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -12,6 +14,11 @@ public class ControladorEnanos : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (TiempoDeGracia > 0) {
+			TiempoDeGracia -= Time.deltaTime;
+			return;
+		}
+
 		var enanos = Object.FindObjectsOfType<Enano1> ();
 		
 		foreach (var enano in enanos) {

@@ -18,9 +18,9 @@ public class Enano1 : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetKey (KeyCode.A))
-						GoLeft ();
+						GoLeft (1);
 		if (Input.GetKey (KeyCode.D))
-						GoRight ();
+						GoRight (1);
 
 		UpdateSprite ();
 
@@ -67,9 +67,9 @@ public class Enano1 : MonoBehaviour {
 
 	private float speedLimit = 15;
 
-	public void GoLeft(){
+	public void GoLeft(float speed){
 		//this.rigidbody2D.AddForce(new Vector3 (-1400 * this.rigidbody2D.mass * Time.deltaTime, 0));
-		this.transform.position += new Vector3 (-13 * Time.deltaTime, 0);
+		this.transform.position += new Vector3 (-speed * Time.deltaTime, 0);
 
 		var ev = this.rigidbody2D.velocity;
 		if(ev.x < -speedLimit) {
@@ -77,9 +77,9 @@ public class Enano1 : MonoBehaviour {
 			this.rigidbody2D.velocity = ev;
 		}
 	}
-	public void GoRight() {
+	public void GoRight(float speed) {
 		//this.rigidbody2D.AddForce(new Vector3 (1400 * this.rigidbody2D.mass * Time.deltaTime, 0));
-		this.transform.position += new Vector3 (13 * Time.deltaTime, 0);
+		this.transform.position += new Vector3 (speed * Time.deltaTime, 0);
 		var ev = this.rigidbody2D.velocity;
 		if(ev.x > speedLimit) {
 			ev.x = speedLimit;
@@ -110,7 +110,7 @@ public class Enano1 : MonoBehaviour {
 		return false;
 	}
 
-	bool IsGrounded()
+	public bool IsGrounded()
 	{
 		if (IsDead)
 				return false;
@@ -135,8 +135,8 @@ public class Enano1 : MonoBehaviour {
 		}
 		this.rigidbody2D.AddForce (new Vector3 (0, Impulso, 0));
 		var ev = this.rigidbody2D.velocity;
-		if(ev.y > 1) {
-			ev.y = 1;
+		if(ev.y > 0.1F) {
+			ev.y = 0.1F;
 			this.rigidbody2D.velocity = ev;
 		}
 
@@ -152,8 +152,8 @@ public class Enano1 : MonoBehaviour {
 	{
 		this.rigidbody2D.AddForce (new Vector3 (0, -Impulso * 0.3F, 0));
 		var ev = this.rigidbody2D.velocity;
-		if (ev.y > 1) {
-			ev.y = 1;
+		if (ev.y > 0.25F) {
+			ev.y = 0.25F;
 			this.rigidbody2D.velocity = ev;
 		}
 		if (IsGrounded ()) {
@@ -173,8 +173,8 @@ public class Enano1 : MonoBehaviour {
 		return null;
 	}
 
-	void OnMouseDown() {
-		 
+	public void Click() {
+		Debug.Log ("Click sobre enano " + NumeroEnano);
 		if (!IsGrounded ()) {
 			return;
 		}

@@ -31,9 +31,9 @@ public class DebugMovimientoEnanos : MonoBehaviour {
 		var enanos = Object.FindObjectsOfType<Enano1> ();
 		foreach (var enano in enanos) {
 			if(Direction)
-				enano.GoRight();
+				enano.GoRight(13);
 			else
-				enano.GoLeft();
+				enano.GoLeft(13);
 		}
 
 	}

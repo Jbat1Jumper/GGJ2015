@@ -3,6 +3,24 @@ guid: c5c91335f77c32a40a8cba282d87595a
 TextureImporter:
   fileIDToRecycleName:
     21300000: 03_levelMenu_escritura
+    21300002: 03_levelMenu_escritura_0
+    21300004: 03_levelMenu_escritura_1
+    21300006: 03_levelMenu_escritura_2
+    21300008: 03_levelMenu_escritura_3
+    21300010: 03_levelMenu_escritura_4
+    21300012: 03_levelMenu_escritura_5
+    21300014: 03_levelMenu_escritura_6
+    21300016: 03_levelMenu_escritura_7
+    21300018: 03_levelMenu_escritura_8
+    21300020: 03_levelMenu_escritura_9
+    21300022: 03_levelMenu_escritura_10
+    21300024: 03_levelMenu_escritura_11
+    21300026: 03_levelMenu_escritura_12
+    21300028: 03_levelMenu_escritura_13
+    21300030: 03_levelMenu_escritura_14
+    21300032: 03_levelMenu_escritura_15
+    21300034: 03_levelMenu_escritura_16
+    21300036: 03_levelMenu_escritura_17
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,13 +44,13 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -43,6 +61,186 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: 03_levelMenu_escritura_0
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 301
+        width: 62
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_1
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 319
+        width: 15
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_2
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 313
+        width: 53
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_3
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 319
+        width: 25
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_4
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 313
+        width: 30
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_5
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 296
+        width: 104
+        height: 80
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_6
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 187
+        width: 54
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_7
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 198
+        width: 36
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_8
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 198
+        width: 47
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_9
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 201
+        width: 35
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_10
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 203
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_11
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 202
+        width: 14
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_12
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 205
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_13
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 96
+        width: 22
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_14
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 102
+        width: 17
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_15
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 96
+        width: 15
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_16
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 101
+        width: 30
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 03_levelMenu_escritura_17
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 77
+        width: 113
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

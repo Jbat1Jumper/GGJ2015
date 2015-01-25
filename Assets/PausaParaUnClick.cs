@@ -6,6 +6,7 @@ public class PausaParaUnClick : MonoBehaviour {
 	private bool Llego = false;
 	private bool Termino = false;
 	private Object DedoSenalador = null;
+	private Object OverlayOscuro = null;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +29,7 @@ public class PausaParaUnClick : MonoBehaviour {
 				ce.ClickSobreEnanos();
 
 				Destroy(DedoSenalador);
+				Destroy(OverlayOscuro);
 				Destroy(this.gameObject);
 			}
 		}	
@@ -42,10 +44,15 @@ public class PausaParaUnClick : MonoBehaviour {
 			Debug.Log ("Ya han pasado enanos por aqui");
 			return;
 		}
+		if (Enano1.IsDead) {
+				Debug.Log ("Los enanos estan muertos, de que tutorial me estas hablando");
+			return;
+		}				
 
 		Llego = true;
 		Time.timeScale = 0F;
 		DedoSenalador = Object.Instantiate (Resources.Load ("DedoSenalador"), this.transform.position, Quaternion.identity);
+		OverlayOscuro = Object.Instantiate (Resources.Load ("OverlayTutorial"), this.transform.position, Quaternion.identity);
 	}
 
 	void PlaySound() {

@@ -115,15 +115,15 @@ public class Enano1 : MonoBehaviour {
 		if (IsDead)
 				return false;
 		return Physics2D.Raycast (new Vector2 (this.transform.position.x, 
-		                                     this.transform.position.y - this.collider2D.bounds.size.y - 0.01F), 
+		                                     this.transform.position.y - this.collider2D.bounds.size.y - 0.05F), 
 		                         new Vector2 (0, -1), 
 		                         0.10F)
 			|| Physics2D.Raycast (new Vector2 (this.transform.position.x + this.collider2D.bounds.size.x / 2, 
-			                                 this.transform.position.y - this.collider2D.bounds.size.y - 0.01F), 
+			                                 this.transform.position.y - this.collider2D.bounds.size.y - 0.05F), 
 			                     new Vector2 (0, -1), 
 			                     0.15F)
 			|| Physics2D.Raycast (new Vector2 (this.transform.position.x + this.collider2D.bounds.size.x, 
-				                                 this.transform.position.y - this.collider2D.bounds.size.y - 0.01F), 
+				                                 this.transform.position.y - this.collider2D.bounds.size.y - 0.05F), 
 				                     new Vector2 (0, -1), 
 				                     0.10F);
 	}
